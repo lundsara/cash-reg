@@ -29,3 +29,5 @@ WooHoo you made it through the week! You are all amazing, you should be very pro
 6. For a more detailed description check out this guid [homework submission guide](https://git.generalassemb.ly/wdi-nyc-dresselhaus/dresselhaus-students/blob/master/homework-submission-instructions.md) 
 
 🚨 **This is due by Sunday(7/17)** 🚨
+
+# Optional but highly suggested 😉 reading [What is code](https://www.bloomberg.com/graphics/2015-paul-ford-what-is-code/)
