@@ -5,13 +5,15 @@
 // Let's get a reference to all our DOM elements
 // and store them in an object
 // @hint: use document.querySelector()
-let total = 0;
+//var total = 0;
+document.querySelector('entries');
+
 const $els = {
-  total:      null,
-  entries:    null,
-  entryForm:  null,
-  inputField: null,
-};
+      total:      null,
+      entries:    null,
+      entryForm:  null,
+      inputField: null,
+    };
 
 
 // helper functions
@@ -24,6 +26,16 @@ const $els = {
  * @return {HTMLTableRowElement} a reference to the new row created
  */
 const addRow = function (content) {
+  // Get a reference to the table
+  var tableRef = document.getElementById("entries");
+  // Insert a row in the table at row index 0
+  var newRow = tableRef.insertRow(0);
+  // Insert a cell in the row at index 0
+  var newCell = newRow.insertCell(0);
+  // injects content into cell
+  newCell.innerHTML = content;
+
+  return newRow
 };
 
 /**
@@ -33,6 +45,8 @@ const addRow = function (content) {
  * @returns {Number} the incoming number multiplied by 100
  */
 const removeDecimal = function (str) {
+  var float = parseFloat (str)
+  return float * 100
 };
 
 /**
@@ -42,6 +56,24 @@ const removeDecimal = function (str) {
  * @returns {string} 0000 -> '$00.00'
  */
 const dollarFormat = function (num) {
+  var digits = num.toString();
+  var output = '$'
+  for (i =0; i < digits.length; i ++);
+    if (i == digits.length - 2)
+    {
+      //using concat to join strings
+      var newDigit = ".";
+      newDigit.concat(digits[i]);
+      output.concat(newDigit);
+    }
+    else
+    {
+      output.concat(digits[i]);
+    }
+
+  return output
+
+
 };
 
 /**
@@ -55,22 +87,22 @@ const handleFormSubmit = function (event) {
   event.preventDefault();
 
   // note: remember that form fields ALWAYS contain text
-
-
+  newValue = removeDecimal(els.input);
 
   // add a row with the data
   // our design dictates that this row should have two cells
   // let's insert the new empty cell BEFORE the existing one
-
-
+  newCell = addRow("");
+  newRow = addRow(dollarFormat(newValue));
 
   // update the total price
   // and
   // update the display total
 
-
+  els.total = els.total + newValue;
 
   // reset the form to clear out anything previously typed
+  els.inputField = ("How Much?");
 
 };
 
@@ -81,5 +113,5 @@ const handleFormSubmit = function (event) {
  * Listen for submit events from the form
  */
 
-$els.entryForm.addEventListener('submit', handleFormSubmit);
+//$els.entryForm.addEventListener('input', handleFormSubmit);
 
