@@ -37,7 +37,7 @@ const addRow = function (content) {
   newRow.insertCell(0);
   var newCell = newRow.insertCell(1);
   // injects content into cell
-newCell.innerHTML = content;
+  newCell.innerHTML = content;
 
 };
 
@@ -61,7 +61,7 @@ const removeDecimal = function (str) {
  */
 const dollarFormat = function (num) {
   var output = num / 100;
-  return '$'.concat(output);
+  return '$'.concat(output.toFixed(2));
 
 
 };
@@ -91,37 +91,23 @@ const handleFormSubmit = function (event) {
   // and
   // update the display total
 
-  console.log(els.total);
+
   els.total = parseFloat(els.total) + parseFloat(newValue);
   document.querySelector("#total").innerHTML = dollarFormat(els.total);
 
   // reset the form to clear out anything previously typed
 
   els.inputField.value = "";
-
-  console.log(newValue);
-  console.log(els.total);
 };
-
-
 
 // event handlers
 /**
  * Listen for submit events from the form
  */
+
 els.entryForm.addEventListener('submit', function(event) {
   handleFormSubmit(event);
 });
 
 
-//*const addRow = function (content) {
-  // Get a reference to the table
-  //var tableRef = document.getElementById("entries");
-  // Insert a row in the table at row index 0
-  //var newRow = tableRef.insertRow(0);
-  // Insert a cell in the row at index 0
-  //var newCell = newRow.insertCell(0);
-  // injects content into cell
-  //newCell.innerHTML = content;
 
-  //return newRow;
